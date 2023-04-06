@@ -5,6 +5,8 @@ block content
   p Hello, this is an updated paragraph text in the index page, Thank you. 
   p Welcome to northwest missouri state university. My name is #{title}.
   button(type="button" class="btn btn-secondary" onclick="doReduce()") Press Me
+  br
+  a(href='http://localhost:3000/cars') Click Here to Visit Cars Website
   div#reduce Reduce the value
   script.
     let count = 20;
@@ -14,5 +16,4 @@ block content
       change -= 1;
       document.getElementById('reduce').textContent = `Count ${count} with change ${change}`;
     }
-  //a(href="http://localhost:3000/cars") Click Here to Visit Cars Website
-  a(href="cars") cars page
+ 
