@@ -96,3 +96,18 @@ ${JSON.stringify(req.body)}`)
 failed`);
     }
 };
+
+//newly added code for Screenshot 4 and 5
+// Handle cars delete on DELETE.
+exports.cars_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await cars.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+   };
+   
