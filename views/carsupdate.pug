@@ -1,0 +1,42 @@
+extends layout
+block content
+  h1= title
+  - let carsid = toShow._id
+  - let car_model = toShow.car_model
+  - let car_year = toShow.car_year
+  - let car_price = toShow.car_price
+ 
+  div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{carsid}
+    
+  - let actionid = "/resource/cars/" + carsid
+  form(id='carsForm', action= actionid, method="PUT")
+    div.form-group
+      label.carsAttr(for='car_model') cars type
+      input#car_model(type='text', name='car_model', value= car_model )
+    div.form-group
+      label.carsAttr(for='car_year') cars size
+      input#car_year(type='text', name='car_year', value= car_year )
+    div.form-group
+      label.carsAttr(for='car_price') cars price
+      input#car_price(type='number', name='car_price', value= car_price )
+    input(type="submit")
+    
+    script.
+      document.forms['carsForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+          method: 'PUT',
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Update succeeded")
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Update failed " + error )
+        });
+      });

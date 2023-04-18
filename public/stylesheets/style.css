@@ -6,3 +6,19 @@ body {
 a {
   color: #00B7FF;
 }
+
+.carsAttr {
+  background-color: aquamarine;
+  width: 120px;
+ }
+
+ #carsForm {
+  background-color:rgb(237, 100, 14);
+  width: 325px;
+}
+
+h1{
+  color: rgb(29, 218, 105);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+ 

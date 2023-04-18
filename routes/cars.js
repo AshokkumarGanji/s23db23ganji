@@ -1,24 +1,18 @@
 var express = require('express');
+const cars_controllers= require('../controllers/cars');
 var router = express.Router();
 
-const cars_controlers= require('../controllers/cars');
-/* GET home page. */
-router.get('/', cars_controlers.cars_view_all_Page);
-router.get('/cars/:id', cars_controlers.cars_detail);
 
-// new code implemented for  SC 2 and 3  of lab12
 
 /* GET cars */
-router.get('/',cars_controlers.cars_view_all_Page );
-router.get('/cars/:id', cars_controlers.cars_detail); 
+router.get('/',cars_controllers.cars_view_all_Page );
+router.get('/cars/:id', cars_controllers.cars_detail); 
 /* GET detail cars page */ 
-//router.get('/detail',secured, cars_controlers.cars_view_one_Page); 
+router.get('/detail',cars_controllers.cars_view_one_Page); 
 /* GET create cars page */ 
-//router.get('/create',secured, cars_controlers.cars_create_Page); 
+router.get('/create',cars_controllers.cars_create_Page); 
 /* GET create update page */ 
-//router.get('/update',secured, cars_controlers.cars_update_Page); 
+router.get('/update',cars_controllers.cars_update_Page); 
 /* GET delete cars page */ 
-//router.get('/delete',secured, cars_controllers.cars_delete_Page); 
-
+router.get('/delete',cars_controllers.cars_delete_Page); 
 module.exports = router;
-
