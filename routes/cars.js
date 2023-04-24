@@ -14,7 +14,7 @@ const secured = (req, res, next) => {
   res.redirect("/login"); 
 } 
 
-/* GET cars */
+/* GET cars */                                               //Bonus Part
 router.get('/',cars_controllers.cars_view_all_Page );
 router.get('/cars/:id', cars_controllers.cars_detail); 
 /* GET detail cars page */ 
