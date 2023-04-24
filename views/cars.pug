@@ -1,22 +1,48 @@
-extends layout
+//- extends layout
 
+//- block content
+//-   h1= title
+//-   - let items = results;
+//-   div(class="container-fluid")
+//-     div(class="row m-1")
+//-       each f,index in items
+//-         - let destination = `dispatch(\"/cars/update?id=${f._id}\")`
+//-         div(class="row-sm-2", class="m-1") 
+//-             Item #{f.car_model}(#{f.car_year}) is #{f.car_price}
+//-             button.btn(class="btn-primary ml-1", onclick= destination) Update
+
+//-   script.
+//-     function buy(param) {
+//-       console.log(param);
+//-     }
+
+//-   script.
+//-     function dispatch(path){
+//-       window.location.href=path
+//-     }
+extends layout
 block content
   h1= title
-  - let items = results;
+  - let result = results;
+  a(class="btn btn-success" href="/cars/create") Create
+  div(class="container-fluid mt-3")
+  div(class="row m-1")
+    each result,index in results
+      - let destination = `dispatch(\"/cars/update?id=${result._id}\")`
+      div(class="col-sm-2" onclick=`buy(${index})`)  #{result.car_model} -  #{result.car_year} - #{result.car_price}
+        button.btn( class="btn-primary ml-1", onclick= destination) Update
+        a(class="btn btn-danger" href=`/cars/delete?id=${result._id}`) Delete
+        a(class="btn btn-dark" href=`/cars/detail?id=${result._id}`) Details
+  br
   div(class="container-fluid")
-    div(class="row m-1")
-      each f,index in items
-        - let destination = `dispatch(\"/cars/update?id=${f._id}\")`
-        div(class="row-sm-2", class="m-1") 
-            Item #{f.car_model}(#{f.car_year}) is #{f.car_price}
-            button.btn(class="btn-primary ml-1", onclick= destination) Update
-
-  script.
-    function buy(param) {
-      console.log(param);
+    div(class="row")
+    - for(var i=0;i<results.length;i++) {
+        div(class="col-sm-2" width="215px" onClick=`buy(${i+1})`) #{results[i].car_model}
+    -}
+  script. 
+    function buy(indexNum) {
+      alert(`You purchased item ${indexNum}`);
     }
-
-  script.
-    function dispatch(path){
-      window.location.href=path
-    }
+    function dispatch(path){ 
+      window.location.href=path 
+    } 
